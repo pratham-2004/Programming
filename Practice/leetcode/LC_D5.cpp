@@ -12,11 +12,11 @@ public:
                     cout<<arr[j][i];
                 }
                 if(rows%2==0){
-                    cout<<
+                    cout<<"T";
                 }
             }
         }
     }
-}
+};
 
 int main(){}
