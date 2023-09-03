@@ -8,21 +8,20 @@ class solution{
     }
 
     string reverseVowels(string s){
-        string vowel="";
-        long j=0;
-
-        for(int i=0;i<s[i]!='\0';i++){
-            if(isVowel(s[i])) vowel[j++]=s[i];
+        int i=0;int j=s.size();
+            while(i<j){
+                if(isVowel(s[i]) && isVowel(s[j])){
+                    swap(s[i],s[j]);
+                    i++;
+                    j--;
+                }
+                else if(!isVowel(s[i])) i++;
+                else if(!isVowel(s[j])) j--;
+            }
+            return s;
         }
-
-        for(int i=0;i<s[i]!='\0';i++){
-            if(isVowel(s[i])) s[i]=vowel[--j];
-        }
-
-        return s;
-    }
 };
 int main(){
     solution s1;
-    cout<<s1.reverseVowels("Red Roses run no risk, sir, on nurses order.");
+    cout<<s1.reverseVowels("hello");
 }
