@@ -26,6 +26,6 @@ using namespace std;
         }
 
 int main(){
-    cout<<reverseWords("  hello  world  ");
+    cout<<reverseWords("My name is Akshit");
 }
 

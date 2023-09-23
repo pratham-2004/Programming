@@ -1,2 +1,1 @@
-    q.dequeue();
-    q.display();
+    c1.search(head,2);
