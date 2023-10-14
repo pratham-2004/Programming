@@ -5,25 +5,24 @@ class node{
     public:
     int data;
     node *next;
-    node(){
-        this->data=0;
+    node(int x){
+        this->data=x;
         this->next=NULL;
     }
 };
 
 class Linkedlist{
     public:
-    node *head=NULL;
     node *temp;
     
-    void insert_beg(int value){
-        node *newnode=new node();
+    void insert_beg(node *&head,int value){
+        node *newnode=new node(value);
         newnode->data=value;
         newnode->next=head;
         head=newnode;
     }
 
-    void reverse(){
+    void reverse(node *&head){
         if(head==NULL) return;
         temp=NULL;
         node *current=head;
@@ -36,7 +35,16 @@ class Linkedlist{
         head=temp;
     }
 
-    void transverse(){
+    node* reverseRecursive(node* &head){
+        if(head==NULL || head->next==NULL) return head;
+        
+        node *newhead=reverseRecursive(head->next);
+        head->next->next=head;
+        head->next=NULL;
+        return newhead;
+    }
+
+    void transverse(node *head){
         node* temp=head;
         if(head==NULL) cout<<"Empty linked list\n";
         else{
@@ -51,12 +59,13 @@ class Linkedlist{
 
 int main(){
     Linkedlist L1;
-    L1.insert_beg(50);
-    L1.insert_beg(40);
-    L1.insert_beg(30);
-    L1.insert_beg(20);
-    L1.insert_beg(10);   
-    L1.transverse();
-    L1.reverse();
-    L1.transverse();
+    node *head=new node(1);
+    node *second=new node(2);
+    node *third=new node(3);
+    head->next=second;
+    second->next=third;
+    L1.insert_beg(head,50);
+    L1.transverse(head);
+    head=L1.reverseRecursive(head);
+    L1.transverse(head);
 }

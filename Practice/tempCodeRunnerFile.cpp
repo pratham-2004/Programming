@@ -1,1 +1,1 @@
-    c1.search(head,2);
+    L1.insert_beg(head,4);

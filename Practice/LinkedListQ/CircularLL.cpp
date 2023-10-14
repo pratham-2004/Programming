@@ -12,6 +12,7 @@ class node{
 };
 
 class CircularLinkedlist{
+
     public:
     
     void insert_beg(int x,node **head){
@@ -60,6 +61,25 @@ class CircularLinkedlist{
         }
     }
 
+    void insert_aft_spec(node **head,int posvalue){
+        node *newnode=new node();
+        if(!*head){
+            *head=newnode;
+            newnode->next=*head;
+        }
+        else{
+            node *temp=*head;
+            while(temp->next!=*head && temp->data!=posvalue){
+                temp=temp->next;
+            }
+            if(temp->data!=posvalue) cout<<"node not found";
+            else {
+                newnode->next=temp->next;
+                temp->next=newnode;
+            }
+        }
+    }
+
     void search(node *head,int num){
         if(head==NULL){
             cout<<"Empty list\n";
@@ -87,11 +107,11 @@ int main(){
     num2->next=num3;
     num3->next=head;
     c1.display(head);
-    c1.insert_beg(10,&head);
+    // c1.insert_beg(10,&head);
+    // c1.display(head);
+    // c1.insert_end(20,&head);
+    // c1.display(head);
+    // c1.search(head,20);
+    c1.insert_aft_spec(&head,3);
     c1.display(head);
-    c1.insert_end(20,&head);
-    c1.display(head);
-    c1.search(head,20);
-
 }
-

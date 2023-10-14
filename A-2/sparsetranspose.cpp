@@ -33,6 +33,7 @@ int main(){
     int arr[6][3]={{4,4,5},{0,1,10},{0,3,12},{2,2,5},{3,0,15},{3,1,12}};
     int arr2[6][3];
     sparsetranspose(arr,arr2);
+    display(arr);
     display(arr2);
 }
 

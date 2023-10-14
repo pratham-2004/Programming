@@ -25,7 +25,7 @@ string intopost(string infix){
         else if(infix[i]==')'){
             while(s1.top()!='('){
                 postfix+=s1.top();
-                s1.pop();
+                s1.pop();           
             }
             s1.pop();
             i++;

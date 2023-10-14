@@ -46,14 +46,19 @@ class Linkedlist{
             cout<<"Empty list\n";
             return;
         }
-        while(current!=NULL){
-            if(current->data==x){
-                cout<<"element found\n";
-                return;
-            }
+        // while(current!=NULL){
+        //     if(current->data==x){
+        //         cout<<"element found\n";
+        //         return;
+        //     }
+        //     current=current->next;
+        // }
+        // cout<<"element not found\n";
+        while(current!=NULL && current->data!=x){
             current=current->next;
         }
-        cout<<"element not found\n";
+        if(current==NULL) cout<<"Element not found\n";
+        else cout<<"Element found\n";
     }
 
     void insert_end(int value){
@@ -88,7 +93,7 @@ class Linkedlist{
         }
     }
 
-    void insert_atspec(int pos,int value){
+    void insert_atspec_pos(int pos,int value){
         Node *q=head;
         if(pos<0){
             cout<<"invalid position";
@@ -101,7 +106,10 @@ class Linkedlist{
                 return;
             }
         }
-
+        if(head==NULL){
+            cout<<"Empty LL";
+            return ;
+        }
         Node *newnode=new Node();
         newnode->data=value;
         newnode->next=NULL;
@@ -109,14 +117,37 @@ class Linkedlist{
         q->next=newnode;
     }
 
+    void del_spec_node(int num){
+        Node *newnode=new Node(num);
+        if(head==NULL){
+            cout<<"Empty list";
+            return ;
+        }
+        else{
+            Node *temp=head;
+            Node *prev;
+            while(temp!=NULL && temp->data!=num){
+                prev=temp;
+                temp=temp->next;
+            }         
+            if (temp==NULL) cout<<"Element not found\n";
+            else if(temp->next=NULL) prev->next=NULL;
+            else if(temp==head) head=head->next;
+            else prev->next=temp->next;
+        free(temp);
+        }
+    }
+    
 };
 
 int main(){
     Linkedlist L1;
     // L1.transverse();
+    L1.insert_beg(1);
     // L1.searchelement(1);
     L1.insert_end(3);
     L1.insert_beg(2);
     L1.insert_aftspec(2,4);
+    L1.del_spec_node(2);
     L1.transverse();
 }
