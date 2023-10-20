@@ -23,21 +23,21 @@ class BuildABinaryTree{
         return -1;
     }
 
-    node *buildTree(int preorder[],int inorder[],int start,int end){
-        static int idx=0;
+    node *buildTree(int postorder[],int inorder[],int start,int end){
+        static int idx=4;
 
         if(start>end) return NULL;
         
-        int curr=preorder[idx];
-        idx++;
+        int curr=postorder[idx];
+        idx--;
         node *nN=new node(curr);
         
         if(start==end) return nN;
 
         int pos=search(inorder,start,end,curr);
-        nN->left=buildTree(preorder,inorder,start,pos-1);
-        nN->right=buildTree(preorder,inorder,pos+1,end);
-        
+        nN->right=buildTree(postorder,inorder,pos+1,end);
+        nN->left=buildTree(postorder,inorder,start,pos-1);
+
         return nN;
     }
 
@@ -52,8 +52,8 @@ class BuildABinaryTree{
 
 int main(){
     BuildABinaryTree B1;
-    int preorder[]={1,2,4,3,5};
+    int postorder[]={4,2,5,3,1};
     int inorder[]={4,2,1,5,3};
-    node *root1=B1.buildTree(preorder,inorder,0,4);
+    node *root1=B1.buildTree(postorder,inorder,0,4);
     B1.inorder(root1);
 }
