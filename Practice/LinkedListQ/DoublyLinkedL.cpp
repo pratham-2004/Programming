@@ -123,6 +123,21 @@ class LinkedList{
         }
         cout<<"The Size of DoublyLinkedList:"<<count;
     }
+
+    node* reverse(node *&head){
+        node *ptr1=head;
+        node *ptr2=ptr1->next;
+        ptr1->next=NULL;
+        ptr1->prev=ptr2;
+        while(ptr2!=NULL){
+            ptr2->prev=ptr2->next;
+            ptr2->next=ptr1;
+            ptr1=ptr2;
+            ptr2=ptr2->prev;
+        }
+        head=ptr1;
+        return head;
+    }
 };
 
 int main(){
@@ -145,5 +160,7 @@ int main(){
     // L1.display(head);
     // L1.del_spec(head,2);
     // L1.display(head);
-    L1.size(head);
+    // L1.size(head);
+    L1.reverse(head);
+    L1.display(head);
 }

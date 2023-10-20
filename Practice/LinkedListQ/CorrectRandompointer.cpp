@@ -21,6 +21,7 @@ class CorrectRandomPointer{
         while(temp!=NULL){
             if(temp->next->prev!=temp) temp->next->prev=temp;
             temp=temp->next;
+            if(temp==head) break; 
         }
     }
 
