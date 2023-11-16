@@ -23,23 +23,23 @@ class buildBST{
         return root;
     }
 
-    void inorder(node *root){
+    void preorder(node *root){
         if(root==NULL) return;
-        inorder(root->left);
-        cout<<root->data;
-        inorder(root->right);
+        cout<<root->data<<"\t";
+        preorder(root->left);
+        preorder(root->right);
     }
 };
 
 
 int main(){
     buildBST B1;
-    int arr[]={4,3,7};
+    int arr[]={15, 18, 6, 7, 17, 3, 4, 13, 9, 20, 2};
     node *root=NULL;
     int i=0;
-    while(i<3){
+    while(i<11){
         root=B1.insertIntoBSTfromArr(root,arr[i]);
         i++;
     }
-    B1.inorder(root);
+    B1.preorder(root);
 }
