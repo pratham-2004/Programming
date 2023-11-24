@@ -8,7 +8,7 @@ class node{
     node* left;
     node *right;
     node(int val){
-        data=val;netf
+        data=val;
         left=NULL;
         right=NULL;
     }

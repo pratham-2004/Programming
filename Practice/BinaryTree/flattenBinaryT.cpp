@@ -18,7 +18,7 @@ class flattenBinaryTree{
     void flatten(node *root){
         if(root->left!=NULL) flatten(root->left);
         node *temp=root->right;
-        root->right=root->left;
+        root->right=root->left; 
         root->left=NULL;
         node *t=root->right;
         while(t->right!=NULL){
