@@ -42,7 +42,7 @@ class LinkedList{
         node *temp=head;
         if(head){
             int count=1;
-            while(temp!=NULL && temp->data!=v){
+            while(temp!=NULL && temp->data!=v){ //wrong
                 temp=temp->next;
             }
             temp->next->prev=newnode;

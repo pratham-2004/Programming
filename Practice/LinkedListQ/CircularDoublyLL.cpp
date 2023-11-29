@@ -47,7 +47,7 @@ class CircularDoublyLL{
         if(head==NULL) nN->next=nN->prev=nN;
         else {
             node *temp=head;
-            while(temp!=NULL && temp->data!=nodeval){
+            while(temp!=head && temp->data!=nodeval){
                 temp=temp->next;
             }
             nN->next=temp->next;
@@ -171,7 +171,7 @@ int main(){
     // C1.display(head);
     C1.del_spec(head,5);
     C1.display(head);
-    C1.search(head,4);
+    C1.search(head,3);
     C1.display2(head);
     C1.size(head);
 }
