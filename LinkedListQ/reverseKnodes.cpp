@@ -33,7 +33,7 @@ class LinkedList{
         if(nextptr!=NULL){
             head->next=reverseKnode(nextptr,k);
         }
-        re
+        return prevptr;
     }
 };
 
